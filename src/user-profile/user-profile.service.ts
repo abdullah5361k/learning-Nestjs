@@ -13,13 +13,14 @@ export class UserProfileService {
         const user = await this.userRepository.findOneBy({id: userId});
         console.log("User ", user);
         if(!user) throw new NotFoundException("User not found");
+        userBio.user = user.id;
         const userProfile =  this.userProfileRepository.create(userBio);
-        console.log("User  Profile ", userProfile);
         await this.userProfileRepository.save(userProfile);
         return {
             ...user,
-            ...userProfile
+            userProfile
         }
     }
+    
 
 }
