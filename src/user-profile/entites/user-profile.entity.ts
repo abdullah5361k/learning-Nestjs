@@ -18,7 +18,9 @@ export class UserProfile {
     @Column()
     phoneNo: string;
 
-    @OneToOne(() => User, (user) => user.profile)
+    @OneToOne(() => User, (user) => user.profile, {onDelete: "CASCADE"})
     @JoinColumn() // This specify that the table contain the FK
     user: User;
+
+
 }

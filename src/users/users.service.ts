@@ -14,7 +14,7 @@ export class UsersService {
     }
 
     async getUser() {
-        const users = await this.userRepository.find({relations: ["profile"]});
+        const users = await this.userRepository.find({relations: ["profile", "posts"]});
         console.log("Users ", users);
         return users;
     }
